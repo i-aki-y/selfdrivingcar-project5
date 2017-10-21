@@ -40,12 +40,12 @@ def image_preprocess(img):
 
     """
 
-    #img = np.copy(img)
-    #g_kernel_size = 5
-    #img = cv2.GaussianBlur(img, (g_kernel_size, g_kernel_size), 0)
-    #img = img_normalize(img)
-    #img = equalize_adapthist(img, clip_limit=0.01, kernel_size=32)
-    #img = equalize_CLAHE(img)
+    img = np.copy(img)
+    g_kernel_size = 5
+    img = cv2.GaussianBlur(img, (g_kernel_size, g_kernel_size), 0)
+    img = img_normalize(img)
+    img = equalize_adapthist(img, clip_limit=0.01, kernel_size=32)
+    img = equalize_CLAHE(img)
 
     return img
 
@@ -199,7 +199,7 @@ def find_cars(img, ystart, ystop, scale, svc, X_scaler, cspace, orient, pix_per_
     # 64 was the orginal sampling rate, with 8 cells and 8 pix per cell
     window = 64
     nblocks_per_window = (window // pix_per_cell) - cell_per_block + 1
-    cells_per_step = 2  # Instead of overlap, define how many cells to step
+    cells_per_step = 1  # Instead of overlap, define how many cells to step
     nxsteps = (nxblocks - nblocks_per_window) // cells_per_step
     nysteps = (nyblocks - nblocks_per_window) // cells_per_step
 
